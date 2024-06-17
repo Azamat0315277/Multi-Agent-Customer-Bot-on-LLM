@@ -77,32 +77,4 @@ LLM (Large Language Models):
 
 Инструменты для работы с большими языковыми моделями, такими как GPT-3 от OpenAI.
 
-from langchain.agents import initialize_agent, load_tools
-from langchain.llms import OpenAI
-
-# Инициализация языковой модели OpenAI
-llm = OpenAI(api_key="your-openai-api-key")
-
-# Загрузка инструментов для Google Search, Wikipedia и OpenAI
-tools = load_tools(["serpapi", "wikipedia", "llm"], llm=llm)
-
-# Инициализация агента с использованием загруженных инструментов
-agent = initialize_agent(tools, llm, agent="zero-shot-react-description", verbose=True)
-
-# Примеры запросов к агенту
-google_query = "What is LangChain?"
-wikipedia_query = "LangChain"
-openai_prompt = "Explain the concept of LangChain."
-
-# Выполнение запросов к агенту
-print("=== Google Search Result ===")
-google_result = agent.run(google_query)
-print(google_result)
-
-print("\n=== Wikipedia Summary ===")
-wikipedia_result = agent.run(wikipedia_query)
-print(wikipedia_result)
-
-print("\n=== OpenAI Response ===")
-openai_result = agent.run(openai_prompt)
-print(openai_result)
+В LangChain агент (agent) представляет собой сложную структуру, которая сочетает в себе различные инструменты (tools), цепочки (chains) и модели (models) для выполнения комплексных задач. Агент использует эти компоненты для обработки входных данных, выполнения действий и получения конечного результата. Вот основные компоненты аген
